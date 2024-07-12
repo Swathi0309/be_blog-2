@@ -1,17 +1,10 @@
 const express = require('express');
-require('dotenv').config()
-const app = express();
+const router = express.Router();
 
-require('./db')
+const userRouter = require('./user.routes');
+const blogRouter = require('./blog.routes');
 
-const PORT = process.env.PORT || 3000;
+router.use('/user', userRouter);
+router.use('/blog', blogRouter);
 
-app.use(express.urlencoded({extended: false}));
-app.use(express.json())
-
-app.use('/', require('./routes'))
-
-
-app.listen(PORT, ()=>{
-    console.log(`server is up and running at port ${PORT}`)
-})
+module.exports = router
