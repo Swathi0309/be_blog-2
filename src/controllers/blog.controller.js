@@ -2,7 +2,7 @@ const Blog = require('../models/blog.models');
 const User=require('../models/user.models')
 
 async function createBlog(req, res){
-    res.send('working')
+    
     const userid =req.user._id;
     const{title ,description,tag,imageUrl} = req.body;
     const documentObject ={}
@@ -20,7 +20,10 @@ async function createBlog(req, res){
                 
             })
         }
-     }
+    }
+    catch{
+        
+    }
 
 }
 module.exports = {createBlog}
